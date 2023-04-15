@@ -7,3 +7,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a790ee774c8553599e7f/maintainability)](https://codeclimate.com/github/execto/backend-project-4/maintainability)
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a790ee774c8553599e7f/test_coverage)](https://codeclimate.com/github/execto/backend-project-4/test_coverage)
+
+## Example
+
+[![asciicast](https://asciinema.org/a/QGLYyDQTREE5FwBknM97oDvaL.svg)](https://asciinema.org/a/QGLYyDQTREE5FwBknM97oDvaL)

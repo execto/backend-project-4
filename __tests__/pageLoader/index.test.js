@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import nock from 'nock';
 
-import loadPage from '../../src/pageLoader';
+import loadPage from '../../src/pageLoader/index.js';
 
 const tmpDir = os.tmpdir();
 const __filename = fileURLToPath(import.meta.url);

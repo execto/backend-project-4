@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Page loader",
   "main": "index.js",
+  "type": "module",
+  "bin": {
+    "page-loader": "bin/page-loader.js"
+  },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },

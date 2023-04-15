@@ -2,7 +2,7 @@ import axios from 'axios';
 import fs from 'fs/promises';
 import path from 'path';
 
-import urlToHtmlFilename from '../utils/urlToHtmlFilename.js';
+import urlToHtmlFilename from './utils/urlToHtmlFilename.js';
 
 const loadPage = (url, output) => {
   const htmlFileName = urlToHtmlFilename(url);

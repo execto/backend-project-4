@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 
-import loadPage from '../src/pageLoader/index.js';
+import loadPage from '../src/index.js';
 
 const cwd = process.cwd();
 const program = new Command();

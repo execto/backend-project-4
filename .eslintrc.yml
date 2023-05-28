@@ -16,3 +16,5 @@ rules:
   import/extensions: off
   no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }]
   comma-dangle: 'error'
+  implicit-arrow-linebreak: off
+  class-methods-use-this: off

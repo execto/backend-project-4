@@ -11,14 +11,6 @@ test('UrlConverter for https://ru.hexlet.io/courses', () => {
   expect(urlConverter.getLocalHostAssetPath('/assets/professions/nodejs.png')).toBe(
     'ru-hexlet-io-courses_files/ru-hexlet-io-assets-professions-nodejs.png',
   );
-  expect(
-    urlConverter.getLocalHostAssetPath('https://ru.hexlet.io/assets/professions/nodejs.png'),
-  ).toBe('ru-hexlet-io-courses_files/ru-hexlet-io-assets-professions-nodejs.png');
-  expect(
-    urlConverter.getLocalHostAssetPath(
-      'https://ru.hexlet.io/assets/courses/professions/nodejs.png',
-    ),
-  ).toBe('ru-hexlet-io-courses_files/ru-hexlet-io-assets-courses-professions-nodejs.png');
 });
 
 test('UrlConverter for https://ru.hexlet.io/courses/node-js', () => {

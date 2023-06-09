@@ -1,10 +1,10 @@
 const getAssetDownloadUrl = (baseUrl, assetUrl) => {
-  let assetUrlProcessed = assetUrl;
-  if (!/^(http:\/\/|https:\/\/)/.test(assetUrl)) {
-    assetUrlProcessed = `${baseUrl}${assetUrl}`;
+  const absoluteUrlRegexp = /^(?:[a-z+]+:)?\/\//;
+  if (absoluteUrlRegexp.test(assetUrl)) {
+    return assetUrl;
   }
 
-  return assetUrlProcessed;
+  return `${baseUrl}${assetUrl}`;
 };
 
 export default getAssetDownloadUrl;

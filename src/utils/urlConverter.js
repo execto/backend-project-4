@@ -11,6 +11,10 @@ class UrlConverter {
     return url.replace(/(\.|\/)/g, '-');
   }
 
+  getOrigin() {
+    return this.rawUrl.origin;
+  }
+
   getLocalhostBaseUrl() {
     const { hostname } = this.rawUrl;
 
@@ -37,11 +41,7 @@ class UrlConverter {
   }
 
   getLocalHostAssetPath(assetUrl) {
-    let assetUrlProcessed = assetUrl;
-    if (/^(http:\/\/|https:\/\/)/.test(assetUrl)) {
-      assetUrlProcessed = new URL(assetUrl).pathname;
-    }
-    const localhostAssetUrl = this.convertUrlToLocalhostUrl(assetUrlProcessed, true);
+    const localhostAssetUrl = this.convertUrlToLocalhostUrl(assetUrl, true);
     const localhostAssetsFolder = this.getLocalhostAssetsFolder();
     const localhostBaseUrl = this.getLocalhostBaseUrl();
     return `${localhostAssetsFolder}/${localhostBaseUrl}${localhostAssetUrl}`;

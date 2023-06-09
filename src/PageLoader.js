@@ -4,8 +4,8 @@ import path from 'path';
 
 import UrlConverter from './utils/urlConverter.js';
 import replaceExternalLinksToLocalhostLinks from './utils/replaceExternalLinksToLocalhostLinks.js';
-import extractImgLinks from './htmlParsers/extractImgLinks.js';
 import getAssetDownloadUrl from './utils/getAssetDownloadUrl.js';
+import extractLinksForDownload from './htmlParsers/extractLinksForDownload.js';
 
 class PageLoader {
   constructor(url, output) {
@@ -21,7 +21,7 @@ class PageLoader {
     return axios
       .get(this.url)
       .then((response) => response.data)
-      .then((html) => this.loadPageAssets(extractImgLinks(html)).then(() => html))
+      .then((html) => this.loadPageAssets(extractLinksForDownload(html, this.url)).then(() => html))
       .then((html) => replaceExternalLinksToLocalhostLinks(html, this.urlConverter))
       .then((data) => fs.writeFile(filePath, data, 'utf-8'))
       .then(() => filePath);
@@ -30,21 +30,21 @@ class PageLoader {
   loadPageAssets(assetsPathsArray) {
     return fs
       .mkdir(path.join(this.output, this.urlConverter.getLocalhostAssetsFolder()), {
-        recursive: true,
+        recursive: true
       })
       .then(() => {
         const assetsLoadPromises = assetsPathsArray.map((assetsPath) => {
           const assetUrl = getAssetDownloadUrl(this.url, assetsPath);
           const localAssetPath = path.join(
             this.output,
-            this.urlConverter.getLocalHostAssetPath(assetsPath),
+            this.urlConverter.getLocalHostAssetPath(assetsPath)
           );
-          console.log(assetUrl);
+
           return axios
             .get(assetUrl, {
-              responseType: 'arraybuffer',
+              responseType: 'arraybuffer'
             })
-            .then((response) => fs.writeFile(localAssetPath, response.data))
+            .then((response) => fs.writeFile(localAssetPath, response.data, 'utf-8'))
             .catch(console.log);
         });
 

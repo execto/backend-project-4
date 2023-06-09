@@ -1,11 +1,15 @@
 import axios from 'axios';
 import fs from 'fs/promises';
 import path from 'path';
+import debug from 'debug';
+import { addLogger } from 'axios-debug-log';
 
 import UrlConverter from './utils/urlConverter.js';
 import replaceExternalLinksToLocalhostLinks from './utils/replaceExternalLinksToLocalhostLinks.js';
 import getAssetDownloadUrl from './utils/getAssetDownloadUrl.js';
 import extractLinksForDownload from './htmlParsers/extractLinksForDownload.js';
+
+addLogger(axios, debug('page-loader-requests'));
 
 class PageLoader {
   constructor(url, output) {
